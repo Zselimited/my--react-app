@@ -1,70 +1,274 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* ---------- Brand colours ---------- */
+:root {
+  --color-floral-white: #fffaee;
+  --color-dark-blue: #0a0f2c;
+  --color-orange: #ffb400;
+  --color-yellow-green: #b7cf4f;
 }
 
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-floral-white);
+  color: var(--color-dark-blue);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+/* Keeps a section from hiding behind the sticky navbar after a jump */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ---------- Navbar ---------- */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 2rem;
+  background: var(--color-dark-blue);
+  border-bottom: 1px solid rgba(255, 250, 238, 0.15);
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 20px;
+  height: 36px;
 }
 
-.nav-links {
+.navbar ul {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav-button,
-.btn-primary {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 10px 18px;
+.navbar a {
+  color: var(--color-floral-white);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.navbar a:hover {
+  color: var(--color-orange);
+}
+
+/* ---------- Dark sections ---------- */
+#home,
+#who-we-serve,
+#how-it-works,
+#programmes,
+#ecosystem,
+#webinars {
+  --bg: var(--color-dark-blue);
+  --text: var(--color-floral-white);
+  --heading: var(--color-orange);
+  --subheading: var(--color-yellow-green);
+  --label: var(--color-yellow-green);
+  --link: var(--color-orange);
+  --card-bg: rgba(255, 250, 238, 0.06);
+  --card-border: rgba(255, 250, 238, 0.2);
+  --outline: var(--color-floral-white);
+}
+
+/* ---------- Light sections ---------- */
+#about,
+#career,
+#employers,
+#why,
+#final-cta,
+#contact {
+  --bg: var(--color-floral-white);
+  --text: var(--color-dark-blue);
+  --heading: var(--color-dark-blue);
+  --subheading: var(--color-dark-blue);
+  --label: var(--color-dark-blue);
+  --link: var(--color-dark-blue);
+  --card-bg: #ffffff;
+  --card-border: var(--color-dark-blue);
+  --outline: var(--color-dark-blue);
+}
+
+/* ---------- Shared section styling ---------- */
+.hero,
+.section {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.section {
+  padding: 4rem max(2rem, calc((100% - 1000px) / 2));
+}
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem max(2rem, calc((100% - 900px) / 2));
+}
+
+.hero h1,
+.section h2 {
+  color: var(--heading);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  margin-bottom: 1.5rem;
+}
+
+.section h2 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.section h3 {
+  color: var(--subheading);
+}
+
+.section-label {
+  margin: 0 0 0.75rem;
+  padding-left: 0.6rem;
+  border-left: 4px solid var(--color-orange);
+  color: var(--label);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section a:not(.btn) {
+  color: var(--link);
+}
+
+.hero-tagline {
+  margin-top: 2rem;
+  color: var(--color-yellow-green);
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-orange);
+  color: var(--color-dark-blue);
+  font-weight: 700;
+  border: 2px solid var(--color-orange);
   border-radius: 8px;
-  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.85;
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid #999;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
+  color: var(--outline);
+  border-color: var(--outline);
 }
 
-.hero {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 60px 32px;
-  background: #f5f7fa;
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
 }
 
-.hero-text {
-  flex: 1;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.hero-image {
-  flex: 1;
-  height: 220px;
-  background: #dbeafe;
+.card {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.card p {
+  margin: 0 0 0.75rem;
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-orange);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* ---------- Bullet lists ---------- */
+.support-list {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.support-list li {
+  margin-bottom: 0.4rem;
+}
+
+.support-list li::marker {
+  color: var(--color-orange);
+}
+
+/* ---------- Ecosystem ---------- */
+.ecosystem-flow {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin: 1.5rem 0;
+}
+
+.stage {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.arrow {
+  display: block;
+  margin: 0.5rem 0;
+  color: var(--color-orange);
+  font-size: 1.8rem;
+}
+
+/* ---------- Final CTA ---------- */
+.final-cta {
+  text-align: center;
+}
+
+.final-cta .hero-buttons {
   justify-content: center;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
