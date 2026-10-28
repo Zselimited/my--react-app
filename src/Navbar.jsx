@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "./assets/Akkant-academy.png";
 
 const links = [
@@ -11,14 +12,28 @@ const links = [
 ];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="navbar">
       <img src={logo} alt="Akkant Academy" className="logo" />
-      <nav>
+
+      <button
+        className="menu-button"
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle menu"
+        aria-expanded={open}
+      >
+        {open ? "✕" : "☰"}
+      </button>
+
+      <nav className={open ? "nav-links open" : "nav-links"}>
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <a href={`#${link.id}`}>{link.label}</a>
+              <a href={`#${link.id}`} onClick={() => setOpen(false)}>
+                {link.label}
+              </a>
             </li>
           ))}
         </ul>
