@@ -17,7 +17,6 @@ export default function Home() {
 
         <div className="hero-buttons">
           <a href="#programmes" className="btn">Explore Our Programmes</a>
-          <a href="#contact" className="btn btn-outline">Join the Academy</a>
         </div>
 
         <p className="hero-tagline">

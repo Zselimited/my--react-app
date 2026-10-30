@@ -18,7 +18,6 @@ export default function Contact() {
       <ul className="support-list">
         <li>Email: {contact.email}</li>
         <li>Phone: {contact.phone}</li>
-        <li>Location: {contact.location}</li>
       </ul>
     </section>
   );

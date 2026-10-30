@@ -13,7 +13,7 @@ export default function FinalCTA() {
       </p>
 
       <div className="hero-buttons">
-        <a href="#contact" className="btn">Join the Academy</a>
+        <a href="https://selar.com/akkantacademycohort1" target="_blank" rel="noopener noreferrer" className="btn">Join the Academy</a>
         <a href="#programmes" className="btn btn-outline">View Programmes</a>
         <a href="#contact" className="btn btn-outline">Hire From Akkant Academy</a>
       </div>
